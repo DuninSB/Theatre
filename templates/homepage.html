@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Театр Солнца</title>
+</head>
+<body>
+{% if request.user.is_authenticated %}
+<h1>Приветствуем Вас на сайте нашего ТЕАТРА, {{ request.user.username }}!</h1>
+{% else %}
+<h1>Приветствуем Вас на сайте нашего ТЕАТРА!</h1>
+{% endif %}
+<table>
+{% for show in show_list %}
+    <tr> <a href="{{ show.get_absolute_url }}">{{ show.play.title }}</a> - {{ show.starts_at }} </tr>
+    <br>
+{% endfor %}
+
+</table>
+</body>
+</html>
